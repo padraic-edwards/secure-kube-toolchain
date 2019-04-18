@@ -151,7 +151,7 @@ stages:
       # source: https://raw.githubusercontent.com/open-toolchain/commons/master/scripts/deploy_kubectl.sh
 
       # Perform a kubectl deploy of container image and check on outcome
-      source <(curl -sSL "https://raw.githubusercontent.com/open-toolchain/commons/master/scripts/deploy_kubectl.sh"
+      source <(curl -sSL "https://raw.githubusercontent.com/open-toolchain/commons/master/scripts/deploy_kubectl.sh")
   - name: Health check
     type: deployer
     target:
