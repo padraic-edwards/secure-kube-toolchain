@@ -1,5 +1,9 @@
 ---
 defaultBaseImageVersion: latest
+properties:
+- name: buildprops
+  value: build.properties
+  type: file
 stages:
 - name: BUILD
   inputs:
@@ -69,10 +73,6 @@ stages:
     job: Build Docker image
   triggers:
   - type: stage
-  properties:
-  - name: buildprops
-    value: build.properties
-    type: file
   jobs:
   - name: Vulnerability Advisor
     type: tester
@@ -103,9 +103,6 @@ stages:
   triggers:
   - type: stage
   properties:
-  - name: buildprops
-    value: build.properties
-    type: file
   - name: CLUSTER_NAMESPACE
     value: ${PROD_CLUSTER_NAMESPACE}
     type: text
