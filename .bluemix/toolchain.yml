@@ -130,7 +130,7 @@ services:
 form:
   pipeline:
     parameters:
-      app-name: $env.source_provider
+      app-name: $env.env_id
       prod-cluster-namespace: >
         $env.pipeline_type === 'tekton' ? 'default' : 'prod'
     schema:
