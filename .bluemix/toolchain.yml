@@ -130,7 +130,7 @@ services:
 form:
   pipeline:
     parameters:
-      app-name: "{{services.repo.parameters.git_id.option}}"
+      app-name: $env.source_provider
       prod-cluster-namespace: >
         $env.pipeline_type === 'tekton' ? 'default' : 'prod'
     schema:
