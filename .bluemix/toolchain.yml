@@ -101,11 +101,12 @@ services:
                 "https://github.ibm.com/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}";
               } else {
                 "https://github.com/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}";
-              }
-              } else {
+            }
+            } else {
               if($env.env_id === 'ibm:yp:au-syd'){
                 "https://au-syd.git.cloud.ibm.com/{{services.repo.parameters.owner_id}}/{{services.repo.parameters.repo_name}}";
               }
+            }
           PIPELINE_REPO: pipeline-repo
           PIPELINE_REPO_BRANCH: >
             $env.branch ? $env.branch : "master"
