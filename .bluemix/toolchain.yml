@@ -12,9 +12,9 @@ template:
   required:
     - build
     - repo
-  #$configuration:
-    #ENABLE_EXTENSIONS: true
-    #ENABLE_IF_ELSE: true
+  $configuration:
+    ENABLE_EXTENSIONS: true
+    ENABLE_IF_ELSE: true
     #EXPRESSION_MAXLENGTH: 10000
   info:
     git url: >
