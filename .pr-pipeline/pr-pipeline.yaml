@@ -204,6 +204,8 @@ spec:
           value: ""
         - name: ibmcloud-api-key
           value: $(params.apikey)
+        - name: commeditor-tag
+          value: ""          
     - name: code-cis-scan-status-finished
       runAfter:
         - cra-cis-check
