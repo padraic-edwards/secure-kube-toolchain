@@ -200,8 +200,6 @@ spec:
           value: ""
         - name: ibmcloud-api-key
           value: $(params.apikey)
-        - name: pipeline-debug
-          value: $(params.pipeline-debug)
     - name: code-cis-scan-status-finished
       runAfter:
         - cra-cis-check
