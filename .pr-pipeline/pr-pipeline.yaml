@@ -25,8 +25,6 @@ spec:
       description: the git repo containing source code. If empty, the repository url will be found from toolchain
       default: ""
     - name: apikey
-    - name: commeditor-tag
-      default: ""
   workspaces:
     - name: pipeline-ws
 
@@ -141,8 +139,6 @@ spec:
           value: git-token
         - name: ibmcloud-api-key
           value: $(params.apikey)
-        - name: commeditor-tag
-          value: ""
     - name: code-vulnerability-scan-status-finished
       runAfter:
         - code-vulnerability-scan
@@ -203,9 +199,7 @@ spec:
         - name: directory-name
           value: ""
         - name: ibmcloud-api-key
-          value: $(params.apikey)
-        - name: commeditor-tag
-          value: ""          
+          value: $(params.apikey)         
     - name: code-cis-scan-status-finished
       runAfter:
         - cra-cis-check
