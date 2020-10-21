@@ -257,8 +257,6 @@ spec:
           value: $(tasks.git-clone.results.git-commit)      
         - name: ibmcloud-api-key
           value: $(params.apikey)
-        - name: commeditor-tag
-          value: ""
     - name: code-bom-check-status-finished
       runAfter:
         - cra-bom
