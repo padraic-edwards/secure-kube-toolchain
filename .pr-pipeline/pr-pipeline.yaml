@@ -34,7 +34,7 @@ spec:
           value: $(params.pipeline-debug)  
     - name: git-clone
       taskRef:
-        name: git-clone-repo
+        name: git-clone
       params:
         - name: continuous-delivery-context-secret
           value: "secure-properties"
