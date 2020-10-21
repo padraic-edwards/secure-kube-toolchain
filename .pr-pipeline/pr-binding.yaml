@@ -15,3 +15,5 @@ spec:
       value: $(event.pull_request.base.sha)
     - name: pr-url
       value: $(event.pull_request.url)
+    - name: commit-timestamp
+      value: $(event.pull_request.head.repo.pushed_at)
