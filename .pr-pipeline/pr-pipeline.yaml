@@ -11,10 +11,6 @@ spec:
     - name: revision
       description: the git revision/commit for the git repo
       default: ""
-    - name: target-branch
-      description: target branch
-    - name: repository-integration
-      description: the repo integration name
     - name: pipeline-debug
       description: toggles debug mode for the pipeline
     - name: pr-url
