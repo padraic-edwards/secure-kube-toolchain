@@ -22,6 +22,8 @@ spec:
     - name: artifactory-dockerconfigjson
       description: dockerconfigjson for pullsecrets
     - name: apikey
+    - name: commit-timestamp
+      description: commit timestamp
   resourcetemplates:
     - apiVersion: v1
       kind: PersistentVolumeClaim
@@ -74,3 +76,5 @@ spec:
             value: $(params.pr-url)
           - name: apikey
             value: $(params.apikey)
+          - name: commit-timestamp
+            value: $(params.commit-timestamp)
