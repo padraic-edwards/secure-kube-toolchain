@@ -88,9 +88,7 @@ spec:
         - name: directory-name
           value: ""
         - name: commit-timestamp
-          value: |
-            TIMESTAMP=$( date -u "+%Y%m%d%H%M%S")
-            echo "$TIMESTAMP"
+          value: $(params.commit-timestamp)
     - name: code-detect-secrets-status-pending
       runAfter:
         - git-clone
