@@ -19,6 +19,7 @@ spec:
       description: the git repo containing source code. If empty, the repository url will be found from toolchain
       default: ""
     - name: apikey
+    - name: commit-timestamp
   workspaces:
     - name: pipeline-ws
 
