@@ -85,8 +85,6 @@ spec:
           value: $(params.branch)
         - name: commit-id
           value: $(tasks.git-clone.results.git-commit)
-        - name: ibmcloud-api-key
-          value: $(params.apikey)
         - name: pipeline-debug
           value: $(params.pipeline-debug)
         - name: directory-name
@@ -133,8 +131,6 @@ spec:
           value: $(tasks.git-clone.results.git-commit)
         - name: git-api-token-key
           value: git-token
-        - name: ibmcloud-api-key
-          value: $(params.apikey)
         - name: scm-type
           value: $(params.scm-type)
         - name: project-id
@@ -198,8 +194,6 @@ spec:
           value: $(tasks.git-clone.results.git-commit)
         - name: directory-name
           value: ""
-        - name: ibmcloud-api-key
-          value: $(params.apikey)
         - name: scm-type
           value: $(params.scm-type)
         - name: project-id
@@ -265,8 +259,6 @@ spec:
           value: $(params.branch)
         - name: target-commit-id
           value: $(tasks.git-clone.results.git-commit)      
-        - name: ibmcloud-api-key
-          value: $(params.apikey)
         - name: scm-type
           value: $(params.scm-type)
         - name: project-id
