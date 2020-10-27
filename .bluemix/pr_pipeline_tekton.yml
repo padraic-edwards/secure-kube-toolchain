@@ -35,7 +35,7 @@ triggers:
     branch: master
     events:
       pull_request: true
-    eventListener: pr-listener
+    eventListener: github-pr-listener
 properties:
   - name: apikey
     value: ${API_KEY}
