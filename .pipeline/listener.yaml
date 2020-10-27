@@ -151,7 +151,7 @@ spec:
       value: "master"
     - name: commit-id
       value: $(event.head_commit.id)
-     - name: repository
+    - name: repository
       value: $(event.repository.html_url)
     - name: scm-type
       value: "github"     
