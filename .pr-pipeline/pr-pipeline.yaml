@@ -18,7 +18,6 @@ spec:
     - name: repository
       description: the git repo containing source code. If empty, the repository url will be found from toolchain
       default: ""
-    - name: apikey
     - name: commit-timestamp
     - name: scm-type
     - name: project-id
