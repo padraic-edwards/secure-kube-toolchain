@@ -145,6 +145,16 @@ metadata:
   name: trigger-binding-manual
 spec:
   params:
+    - name: revision
+      value: master
+    - name: branch
+      value: "master"
+    - name: commit-id
+      value: $(event.head_commit.id)
+     - name: repository
+      value: $(event.repository.html_url)
+    - name: scm-type
+      value: "github"     
 ---
 apiVersion: tekton.dev/v1beta1
 kind: EventListener
