@@ -20,6 +20,9 @@ spec:
       default: ""
     - name: apikey
     - name: commit-timestamp
+    - name: scm-type
+    - name: project-id
+      default: ""
   workspaces:
     - name: pipeline-ws
 
@@ -132,6 +135,10 @@ spec:
           value: git-token
         - name: ibmcloud-api-key
           value: $(params.apikey)
+        - name: scm-type
+          value: $(params.scm-type)
+        - name: project-id
+          value: $(params.project-id) 
     - name: code-vulnerability-scan-status-finished
       runAfter:
         - code-vulnerability-scan
@@ -192,7 +199,11 @@ spec:
         - name: directory-name
           value: ""
         - name: ibmcloud-api-key
-          value: $(params.apikey)         
+          value: $(params.apikey)
+        - name: scm-type
+          value: $(params.scm-type)
+        - name: project-id
+          value: $(params.project-id)
     - name: code-cis-scan-status-finished
       runAfter:
         - cra-cis-check
@@ -256,6 +267,10 @@ spec:
           value: $(tasks.git-clone.results.git-commit)      
         - name: ibmcloud-api-key
           value: $(params.apikey)
+        - name: scm-type
+          value: $(params.scm-type)
+        - name: project-id
+          value: $(params.project-id)
     - name: code-bom-check-status-finished
       runAfter:
         - cra-bom
