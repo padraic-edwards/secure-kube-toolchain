@@ -186,6 +186,10 @@ spec:
       value: "$(event.ref)"
     - name: revision
       value: "$(event.checkout_sha)"
+    - name: commit-timestamp
+      value: "$(event.pull_request.head.repo.pushed_at)"
+    - name: commit-id
+      value: "$(event.pull_request.head.sha)"
 ---
 apiVersion: tekton.dev/v1beta1
 kind: EventListener
@@ -210,6 +214,10 @@ spec:
       value: "$(event.push.changes[0].new.target.hash)"
     - name: branch
       value: "$(event.push.changes[0].new.name)"
+    - name: commit-timestamp
+      value: "$(event.pull_request.head.repo.pushed_at)"
+    - name: commit-id
+      value: "$(event.pull_request.head.sha)"
 ---
 apiVersion: tekton.dev/v1beta1
 kind: EventListener
