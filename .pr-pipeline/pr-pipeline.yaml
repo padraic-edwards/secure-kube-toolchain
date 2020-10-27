@@ -129,8 +129,6 @@ spec:
           value: $(params.pr-url)
         - name: commit-id
           value: $(tasks.git-clone.results.git-commit)
-        - name: git-api-token-key
-          value: git-token
         - name: scm-type
           value: $(params.scm-type)
         - name: project-id
