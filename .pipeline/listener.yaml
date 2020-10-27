@@ -156,7 +156,7 @@ spec:
     - name: scm-type
       value: "github"
     - name: commit-timestamp
-      value: $(event.repository.pushed_at)
+      value: $(event.head_commit.timestamp)
 ---
 apiVersion: tekton.dev/v1beta1
 kind: EventListener
@@ -180,7 +180,7 @@ spec:
     - name: commit-id
       value: $(event.after)
     - name: commit-timestamp
-      value: $(event.repository.pushed_at)
+      value: $(event.repository.updated_at)
     - name: repository
       value: $(event.repository.html_url)
     - name: scm-type
