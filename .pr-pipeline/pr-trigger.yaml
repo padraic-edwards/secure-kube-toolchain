@@ -24,6 +24,11 @@ spec:
     - name: apikey
     - name: commit-timestamp
       description: commit timestamp
+    - name: scm-type
+      description: source code type used (github, github-ent, gitlab)
+    - name: project-id
+      description: project id
+      default: ""
   resourcetemplates:
     - apiVersion: v1
       kind: PersistentVolumeClaim
@@ -78,3 +83,7 @@ spec:
             value: $(params.apikey)
           - name: commit-timestamp
             value: $(params.commit-timestamp)
+          - name: scm-type
+            value: $(params.scm-type)
+          - name: project-id
+            value: $(params.project-id) 
