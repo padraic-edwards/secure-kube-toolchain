@@ -111,6 +111,18 @@ services:
           TEKTON_CATALOG_REPO: tekton-catalog-repo
           REGISTRY_REGION_ID: "{{form.pipeline.parameters.registry-region}}"
           REGISTRY_NAMESPACE: "{{form.pipeline.parameters.registry-namespace}}"
+          GIT_COMMIT_EVENT_LISTENER_NAME: >
+            if ( $env.source_provider === 'githubconsolidated' ) {
+              'github-pr-listener';
+            } else if ( $env.source_provider === 'gitlab' ) {
+              'gitlab-pr-listener';
+            } else if ( $env.source_provider === 'bitbucketgit' ) {
+              'bitbucket-commit';
+            } else if ( $env.source_provider === 'github_integrated' ) {
+              'github-ent-pr-listener';
+            } else {
+              'gitlab-pr-listener';
+            }
         execute: false
   build:
     service_id: pipeline
@@ -158,15 +170,15 @@ services:
           TEKTON_GITSECURE: tekton-gitsecure
           GIT_COMMIT_EVENT_LISTENER_NAME: >
             if ( $env.source_provider === 'githubconsolidated' ) {
-              'github-commit';
+              'github-ci-listener';
             } else if ( $env.source_provider === 'gitlab' ) {
-              'grit-or-gitlab-commit';
+              'gitlab-ci-listener';
             } else if ( $env.source_provider === 'bitbucketgit' ) {
               'bitbucket-commit';
             } else if ( $env.source_provider === 'github_integrated' ) {
-              'github-commit';
+              'github-ent-ci-listener';
             } else {
-              'grit-or-gitlab-commit';
+              'gitlab-ci-listener';
             }
         execute: >
           $env.pipeline_type === 'tekton' ? false : true
