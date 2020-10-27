@@ -19,8 +19,6 @@ spec:
       description: toggles debug mode for the pipeline
     - name: pr-url
       description: PR url
-    - name: artifactory-dockerconfigjson
-      description: dockerconfigjson for pullsecrets
     - name: apikey
     - name: commit-timestamp
       description: commit timestamp
@@ -41,19 +39,6 @@ spec:
         volumeMode: Filesystem
         accessModes:
           - ReadWriteOnce
-    - apiVersion: v1
-      kind: Secret
-      data:
-        .dockerconfigjson: $(params.artifactory-dockerconfigjson)
-      metadata:
-        name: artifactory-pull-secret
-      type: kubernetes.io/dockerconfigjson
-    - apiVersion: v1
-      kind: ServiceAccount
-      imagePullSecrets:
-        - name: artifactory-pull-secret
-      metadata:
-        name: sa-pullsecret
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
@@ -65,7 +50,6 @@ spec:
           - name: pipeline-ws
             persistentVolumeClaim:
               claimName: pipelinerun-$(uid)-pvc
-        serviceAccountName: sa-pullsecret
         params:
           - name: branch
             value: $(params.branch)
