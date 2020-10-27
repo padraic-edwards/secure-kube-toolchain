@@ -185,7 +185,7 @@ spec:
     - bindings:  
         - name: github-ci-binding   
       template:
-        name: ci-template
+        name: trigger-template-secure-kube
 ---
 apiVersion: tekton.dev/v1beta1
 kind: EventListener
@@ -196,7 +196,7 @@ spec:
     - bindings:   
         - name: gitlab-ci-binding
       template:
-        name: ci-template
+        name: trigger-template-secure-kube
 ---        
 apiVersion: tekton.dev/v1beta1
 kind: EventListener
@@ -207,7 +207,7 @@ spec:
     - bindings: 
         - name: github-ent-ci-binding   
       template:
-        name: ci-template
+        name: trigger-template-secure-kube
 ---
 apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
