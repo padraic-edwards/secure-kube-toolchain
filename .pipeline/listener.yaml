@@ -51,6 +51,9 @@ spec:
       description: dockerconfigjson for pullsecrets
     - name: apikey
     - name: commit-timestamp
+    - name: scm-type
+    - name: project-id
+
   resourcetemplates:
     - apiVersion: v1
       kind: PersistentVolumeClaim
@@ -126,6 +129,10 @@ spec:
             value: $(params.apikey)
           - name: commit-timestamp
             value: $(params.commit-timestamp)
+          - name: scm-type
+            value: $(params.scm-type)
+          - name: project-id
+            value: $(params.project-id)
         workspaces:
           - name: pipeline-ws
             persistentVolumeClaim:
