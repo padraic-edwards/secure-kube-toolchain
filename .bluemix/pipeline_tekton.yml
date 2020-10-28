@@ -21,9 +21,9 @@ inputs:
     branch: master
     path: toolchain
   - type: git
-    branch: main
-    service: ${TEKTON_GITSECURE}
-    path: gitsecure
+    branch: master
+    service: ${TEKTON_CATALOG_REPO}
+    path: cra
   - type: git
     service: ${TEKTON_CATALOG_REPO}
     branch: master
