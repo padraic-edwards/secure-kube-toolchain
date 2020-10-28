@@ -177,8 +177,7 @@ services:
             } else {
               'gitlab-ci-listener';
             }
-        execute: >
-          $env.pipeline_type === 'tekton' ? false : true
+        execute: manual-run
   devops-insights:
     service_id: draservicebroker
   webide:
