@@ -14,6 +14,7 @@ template:
     - repo
     - tekton-catalog-repo
     - tekton-gitsecure
+    - tekton-catalog-repo-nadgowdas
   $configuration:
      ENABLE_EXTENSIONS: true
      ENABLE_IF_ELSE: true
@@ -58,12 +59,22 @@ services:
       enable_traceability: false
       legal: true
       kind: ['pipeline']
-  tekton-catalog-repo:
+  tekton-catalog-repo-nadgowdas:
     service_id: >
       $env.pipeline_type === 'tekton' ? 'githubconsolidated' : ''
     parameters:
       repo_url: "https://github.com/nadgowdas/tekton-catalog"
       source_repo_url: "https://github.com/nadgowdas/tekton-catalog"
+      type: "link"
+      has_issues: false
+      enable_traceability: false
+      kind: ['pipeline']
+  tekton-catalog-repo:
+    service_id: >
+      $env.pipeline_type === 'tekton' ? 'githubconsolidated' : ''
+    parameters:
+      repo_url: "https://github.com/open-toolchain/tekton-catalog"
+      source_repo_url: "https://github.com/open-toolchain/tekton-catalog"
       type: "link"
       has_issues: false
       enable_traceability: false
@@ -94,6 +105,7 @@ services:
           PIPELINE_REPO_BRANCH: >
             $env.branch ? $env.branch : "master"
           TEKTON_CATALOG_REPO: tekton-catalog-repo
+          TEKTON_CATALOG_REPO_NADGOWDAS: tekton-catalog-repo-nadgowdas
           REGISTRY_REGION_ID: "{{form.pipeline.parameters.registry-region}}"
           REGISTRY_NAMESPACE: "{{form.pipeline.parameters.registry-namespace}}"
           GIT_COMMIT_EVENT_LISTENER_NAME: >
@@ -152,6 +164,7 @@ services:
           PIPELINE_REPO_BRANCH: >
             $env.branch ? $env.branch : "master"
           TEKTON_CATALOG_REPO: tekton-catalog-repo
+          TEKTON_CATALOG_REPO_NADGOWDAS: tekton-catalog-repo-nadgowdas
           GIT_COMMIT_EVENT_LISTENER_NAME: >
             if ( $env.source_provider === 'githubconsolidated' ) {
               'github-ci-listener';
