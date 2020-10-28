@@ -13,7 +13,7 @@ inputs:
     branch: master
     path: toolchain
   - type: git
-    branch: master
+    branch: cra-rc2
     service: ${TEKTON_CATALOG_REPO}
     path: cra
   - type: git
@@ -39,8 +39,6 @@ triggers:
 properties:
   - name: apikey
     value: ${API_KEY}
-    type: SECURE
-  - name: artifactory-dockerconfigjson
     type: SECURE
   - name: pipeline-debug
     value: "0"
