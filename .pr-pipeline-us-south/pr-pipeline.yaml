@@ -69,6 +69,63 @@ spec:
       workspaces:
         - name: artifacts
           workspace: pipeline-ws
+    - name: code-detect-secrets-status-pending
+      runAfter:
+        - git-clone
+      taskRef:
+        name: git-set-commit-status
+      workspaces:
+        - name: artifacts
+          workspace: pipeline-ws
+      params:
+        - name: state
+          value: pending
+        - name: description
+          value: "PR Pipeline Status"
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+        - name: context
+          value: "Vulnerability scan"
+        - name: repository
+          value: $(tasks.extract-repository-url.results.extracted-value)
+    - name: code-cis-scan-status-pending
+      runAfter:
+        - git-clone
+      taskRef:
+        name: git-set-commit-status
+      workspaces:
+        - name: artifacts
+          workspace: pipeline-ws
+      params:
+        - name: state
+          value: pending
+        - name: description
+          value: "PR Pipeline Status"
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+        - name: context
+          value: "CIS scan"
+        - name: repository
+          value: $(tasks.extract-repository-url.results.extracted-value)
+    - name: code-bom-check-status-pending
+      runAfter:
+        - git-clone
+      taskRef:
+        name: git-set-commit-status
+      workspaces:
+        - name: artifacts
+          workspace: pipeline-ws
+      params:
+        - name: state
+          value: pending
+        - name: description
+          value: "PR Pipeline Status"
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+        - name: context
+          value: "BOM check"
+        - name: repository
+          value: $(tasks.extract-repository-url.results.extracted-value)
     - name: cra-discovery-scan
       runAfter:
         - git-clone
@@ -90,25 +147,7 @@ spec:
           value: ""
         - name: commit-timestamp
           value: $(params.commit-timestamp)
-    - name: code-detect-secrets-status-pending
-      runAfter:
-        - git-clone
-      taskRef:
-        name: git-set-commit-status
-      workspaces:
-        - name: artifacts
-          workspace: pipeline-ws
-      params:
-        - name: state
-          value: pending
-        - name: description
-          value: "Tekton PR Pipeline Status"
-        - name: pipeline-debug
-          value: $(params.pipeline-debug)
-        - name: context
-          value: "Vulnerability scan"
-        - name: repository
-          value: $(tasks.extract-repository-url.results.extracted-value)
+
     - name: code-vulnerability-scan
       runAfter:
         - cra-discovery-scan
@@ -151,25 +190,6 @@ spec:
           value: "Tekton PR Pipeline Status"
         - name: pipeline-debug
           value: $(params.pipeline-debug)
-    - name: code-cis-scan-status-pending
-      runAfter:
-        - git-clone
-      taskRef:
-        name: git-set-commit-status
-      workspaces:
-        - name: artifacts
-          workspace: pipeline-ws
-      params:
-        - name: state
-          value: pending
-        - name: description
-          value: "Tekton PR Pipeline Status"
-        - name: pipeline-debug
-          value: $(params.pipeline-debug)
-        - name: context
-          value: "CIS scan"
-        - name: repository
-          value: $(tasks.extract-repository-url.results.extracted-value)
     - name: cra-cis-check
       taskRef:
         name: cra-cis-check
@@ -214,25 +234,7 @@ spec:
           value: "CIS scan"
         - name: repository
           value: $(tasks.extract-repository-url.results.extracted-value)
-    - name: code-bom-check-status-pending
-      runAfter:
-        - git-clone
-      taskRef:
-        name: git-set-commit-status
-      workspaces:
-        - name: artifacts
-          workspace: pipeline-ws
-      params:
-        - name: state
-          value: pending
-        - name: description
-          value: "Tekton PR Pipeline Status"
-        - name: pipeline-debug
-          value: $(params.pipeline-debug)
-        - name: context
-          value: "BOM check"
-        - name: repository
-          value: $(tasks.extract-repository-url.results.extracted-value)
+
     - name: cra-bom
       taskRef:
         name: cra-bom
