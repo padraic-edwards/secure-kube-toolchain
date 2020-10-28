@@ -13,10 +13,6 @@ inputs:
     branch: master
     path: toolchain
   - type: git
-    branch: cra-rc2
-    service: ${TEKTON_CATALOG_REPO_NADGOWDAS}
-    path: cra
-  - type: git
     branch: master
     service: ${TEKTON_CATALOG_REPO}
     path: linter
