@@ -66,19 +66,6 @@ spec:
         volumeMode: Filesystem
         accessModes:
           - ReadWriteOnce
-    - apiVersion: v1
-      kind: Secret
-      data:
-        .dockerconfigjson: $(params.artifactory-dockerconfigjson)
-      metadata:
-        name: artifactory-pull-secret
-      type: kubernetes.io/dockerconfigjson
-    - apiVersion: v1
-      kind: ServiceAccount
-      imagePullSecrets:
-        - name: artifactory-pull-secret
-      metadata:
-        name: sa-pullsecret
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
@@ -137,7 +124,6 @@ spec:
           - name: pipeline-ws
             persistentVolumeClaim:
               claimName: secure-kube-$(uid)-pvc
-        serviceAccountName: sa-pullsecret
 ---
 apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
