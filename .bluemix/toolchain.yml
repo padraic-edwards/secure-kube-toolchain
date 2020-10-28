@@ -62,26 +62,11 @@ services:
     service_id: >
       $env.pipeline_type === 'tekton' ? 'githubconsolidated' : ''
     parameters:
-      repo_url: "https://github.com/open-toolchain/tekton-catalog"
-      source_repo_url: "https://github.com/open-toolchain/tekton-catalog"
+      repo_url: "https://github.com/nadgowdas/tekton-catalog"
+      source_repo_url: "https://github.com/nadgowdas/tekton-catalog"
       type: "link"
       has_issues: false
       enable_traceability: false
-      kind: ['pipeline']
-  tekton-gitsecure:
-    service_id: github_integrated
-    parameters:
-      repo_name: 'gitsecure-tekton-pipeline'
-      repo_url: >
-        $env.type === 'link' ?
-          $env.app_repo : 'https://github.ibm.com/oneibmcloud/gitsecure-tekton-pipeline'
-      source_repo_url: >
-        $env.type === 'fork' || $env.type === 'clone' ?
-          $env.app_repo : 'https://github.ibm.com/oneibmcloud/gitsecure-tekton-pipeline'
-      type: $env.type || 'link'
-      has_issues: false
-      enable_traceability: false
-      legal: true
       kind: ['pipeline']
   pr:
     service_id: pipeline
@@ -167,7 +152,6 @@ services:
           PIPELINE_REPO_BRANCH: >
             $env.branch ? $env.branch : "master"
           TEKTON_CATALOG_REPO: tekton-catalog-repo
-          TEKTON_GITSECURE: tekton-gitsecure
           GIT_COMMIT_EVENT_LISTENER_NAME: >
             if ( $env.source_provider === 'githubconsolidated' ) {
               'github-ci-listener';
