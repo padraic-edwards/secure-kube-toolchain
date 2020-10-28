@@ -21,7 +21,7 @@ inputs:
     branch: master
     path: toolchain
   - type: git
-    branch: master
+    branch: cra-rc2
     service: ${TEKTON_CATALOG_REPO}
     path: cra
   - type: git
@@ -82,5 +82,3 @@ properties:
   - name: dev-resource-group
     value: ${PROD_RESOURCE_GROUP}
     type: text
-  - name: artifactory-dockerconfigjson
-    type: SECURE
